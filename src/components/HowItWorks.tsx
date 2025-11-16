@@ -109,7 +109,7 @@ export function HowItWorks() {
             <div className="relative">
               <div className="rounded-xl overflow-hidden shadow-xl border border-gray-800">
                 <img
-                  src="https://via.placeholder.com/500x300"
+                  src="https://images.unsplash.com/photo-1666816943035-15c29931e975?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibG9ja2NoYWluJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NjI2MjI1ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                   alt="Placeholder"
                   className="w-full h-auto"
                 />
