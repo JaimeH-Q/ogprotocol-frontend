@@ -3,7 +3,6 @@
 Comandos para arrancar el proyecto (PowerShell):
 
 ```powershell
-cd frontend
 npm install
 npm run dev
 ```
