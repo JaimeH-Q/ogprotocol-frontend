@@ -89,10 +89,23 @@ export default function Login() {
       }
 
       console.log('handleLogin: server responded status', res.status)
+        
 
       if (!res.ok) {
-        const text = await res.text()
-        throw new Error(text || t('login.failed'))
+        // Try to parse a JSON error message, fall back to text or translation
+        let message = t('login.failed')
+        try {
+          const json = await res.json()
+          message = json?.message || json?.error || JSON.stringify(json) || message
+        } catch (e) {
+          const text = await res.text()
+          message = text || message
+        }
+
+        // Show server-provided message to the user and do not redirect
+        setError(message)
+        setLoading(false)
+        return
       }
 
       navigate(redirectTo)
