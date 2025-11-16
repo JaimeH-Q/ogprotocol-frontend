@@ -1,0 +1,38 @@
+:root{
+  --page-padding: 20px;
+}
+.root {
+  padding: var(--page-padding);
+  background: #fff7ed;
+  min-height: calc(100vh - 64px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(2,6,23,0.06);
+  width: 320px;
+}
+.title {
+  margin: 0 0 12px;
+  color: #0f172a;
+}
+.input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+.button {
+  width: 100%;
+  padding: 10px;
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

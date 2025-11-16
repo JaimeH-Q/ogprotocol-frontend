@@ -1,0 +1,24 @@
+:root{
+  --page-padding: 20px;
+}
+.root {
+  padding: var(--page-padding);
+  background: #eef2ff;
+  min-height: calc(100vh - 64px);
+}
+.title {
+  color: #1e293b;
+  font-size: 2rem;
+  margin: 0 0 8px;
+}
+.text {
+  color: #475569;
+  margin: 0;
+}
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(2,6,23,0.06);
+  margin-top: 12px;
+}
