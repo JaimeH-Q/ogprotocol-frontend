@@ -1,8 +1,11 @@
 import { TrendingUp, Users, Server, Globe } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/Card";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { useTranslation } from 'react-i18next'
 
 export function MarketStats() {
+  const { t } = useTranslation()
+
   // Real Minecraft player data from 2016-2024
   const minecraftGrowthData = [
     { year: "2016", players: 40 },
@@ -32,28 +35,28 @@ export function MarketStats() {
   const stats = [
     {
       icon: Users,
-      label: "Jugadores Minecraft (2024)",
+      label: t('market.statPlayersLabel'),
       value: "204.3M",
       change: "+18.8% vs. 2023",
       color: "bg-blue-500",
     },
     {
       icon: TrendingUp,
-      label: "Visitas TLauncher (Sep 2025)",
+      label: t('market.statVisitsLabel'),
       value: "4.53M",
       change: "Mensuales",
       color: "bg-green-500",
     },
     {
       icon: Globe,
-      label: "Rank Global TLauncher",
+      label: t('market.statRankLabel'),
       value: "#12,289",
       change: "En todo el mundo",
       color: "bg-purple-500",
     },
     {
       icon: Server,
-      label: "Mercado Potencial",
+      label: t('market.statPotentialLabel'),
       value: "~30%",
       change: "Jugadores no premium estimados",
       color: "bg-orange-500",
@@ -67,12 +70,10 @@ export function MarketStats() {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="mb-4 text-white text-4xl font-bold">
-              Estadísticas del Mercado
+              {t('market.title')}
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Minecraft es uno de los juegos más populares del mundo con más de 200 millones de jugadores activos. 
-              Una parte significativa de esta base utiliza versiones no oficiales, representando una oportunidad enorme 
-              para nuestro sistema de autenticación.
+              {t('market.description')}
             </p>
           </div>
 
@@ -102,9 +103,9 @@ export function MarketStats() {
             {/* Minecraft Growth Chart */}
             <Card className="border-gray-800 bg-gray-900 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-white">Crecimiento de Jugadores de Minecraft</CardTitle>
+                <CardTitle className="text-white">{t('market.chartMinecraft.title')}</CardTitle>
                 <CardDescription className="text-gray-400">
-                  Base de jugadores activos 2016-2024 (en millones)
+                  {t('market.chartMinecraft.desc')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -139,9 +140,9 @@ export function MarketStats() {
             {/* TLauncher Traffic Chart */}
             <Card className="border-gray-800 bg-gray-900 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-white">Tráfico de TLauncher</CardTitle>
+                <CardTitle className="text-white">{t('market.chartTlauncher.title')}</CardTitle>
                 <CardDescription className="text-gray-400">
-                  Visitas mensuales en 2025 (en millones)
+                  {t('market.chartTlauncher.desc')}
                 </CardDescription>
               </CardHeader>
               <CardContent>

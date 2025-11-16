@@ -1,30 +1,29 @@
 import { Shield, Link, CheckCircle, Users } from "lucide-react";
+import { useTranslation } from 'react-i18next'
 
 export function HowItWorks() {
+  const { t } = useTranslation()
+
   const steps = [
     {
       icon: Users,
-      title: "Registro del Usuario",
-      description:
-        "Los jugadores no premium crean una identidad única en la blockchain sin necesidad de cuentas oficiales.",
+      title: t('how.step1.title'),
+      description: t('how.step1.description'),
     },
     {
       icon: Link,
-      title: "Generación de Credenciales",
-      description:
-        "Se generan credenciales criptográficas únicas que se almacenan de forma descentralizada en la blockchain.",
+      title: t('how.step2.title'),
+      description: t('how.step2.description'),
     },
     {
       icon: Shield,
-      title: "Verificación Segura",
-      description:
-        "Los servidores verifican la autenticidad del jugador consultando la blockchain sin exponer datos sensibles.",
+      title: t('how.step3.title'),
+      description: t('how.step3.description'),
     },
     {
       icon: CheckCircle,
-      title: "Acceso Garantizado",
-      description:
-        "Una vez verificado, el jugador obtiene acceso seguro al servidor con su identidad protegida.",
+      title: t('how.step4.title'),
+      description: t('how.step4.description'),
     },
   ];
 
@@ -34,12 +33,8 @@ export function HowItWorks() {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-white">¿Cómo Funciona?</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Nuestra solución utiliza tecnología blockchain para crear un sistema
-              de autenticación transparente, seguro y accesible para todos los
-              jugadores.
-            </p>
+            <h2 className="mb-4 text-white">{t('how.title')}</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">{t('how.description')}</p>
           </div>
 
           {/* Steps Grid */}
@@ -71,13 +66,8 @@ export function HowItWorks() {
           {/* Visual Explanation */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="mb-4 text-white">Tecnología Blockchain</h3>
-              <p className="text-gray-400 mb-6">
-                La blockchain proporciona un registro inmutable y descentralizado
-                de todas las identidades de jugadores. Esto significa que no hay
-                un punto único de fallo y los datos están protegidos contra
-                manipulación.
-              </p>
+              <h3 className="mb-4 text-white">{t('how.techTitle')}</h3>
+              <p className="text-gray-400 mb-6">{t('how.techDesc')}</p>
 
               <div className="space-y-4">
                 {/* Feature 1 */}
@@ -86,11 +76,8 @@ export function HowItWorks() {
                     <CheckCircle className="w-4 h-4 text-green-400" />
                   </div>
                   <div>
-                    <p className="text-white">Descentralización Total</p>
-                    <p className="text-gray-400">
-                      No dependes de un servidor central que pueda caer o ser
-                      hackeado.
-                    </p>
+                    <p className="text-white">{t('how.feature1.title')}</p>
+                    <p className="text-gray-400">{t('how.feature1.desc')}</p>
                   </div>
                 </div>
 
@@ -100,10 +87,8 @@ export function HowItWorks() {
                     <CheckCircle className="w-4 h-4 text-green-400" />
                   </div>
                   <div>
-                    <p className="text-white">Privacidad Garantizada</p>
-                    <p className="text-gray-400">
-                      Tus datos personales nunca se almacenan en la blockchain.
-                    </p>
+                    <p className="text-white">{t('how.feature2.title')}</p>
+                    <p className="text-gray-400">{t('how.feature2.desc')}</p>
                   </div>
                 </div>
 
@@ -113,11 +98,8 @@ export function HowItWorks() {
                     <CheckCircle className="w-4 h-4 text-green-400" />
                   </div>
                   <div>
-                    <p className="text-white">Verificación Instantánea</p>
-                    <p className="text-gray-400">
-                      La autenticación se realiza en segundos sin necesidad de
-                      servidores externos.
-                    </p>
+                    <p className="text-white">{t('how.feature3.title')}</p>
+                    <p className="text-gray-400">{t('how.feature3.desc')}</p>
                   </div>
                 </div>
               </div>

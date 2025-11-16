@@ -2,11 +2,13 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "./ui/Button"
 
 import OG_ICONO from "../static/OG_ICONO.png";
+import { useTranslation } from 'react-i18next'
 
 const bgColorStyle = {backgroundColor: '#101828'};
 
 export function NavbarLogin() {
-    return (
+  const { t } = useTranslation()
+  return (
         <nav style={bgColorStyle} className="p-1 text-white border-b border-gray-800">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
@@ -17,20 +19,20 @@ export function NavbarLogin() {
 
           <div className=" md:flex items-center gap-8">
               <a href="/" className="text-white hover:text-blue-400 transition-colors">
-              Inicio
+              {t('nav.home')}
               </a>
                     
             
 
             <a href="/#how-it-works" className="text-gray-300 hover:text-blue-400 transition-colors">
-              ¿Cómo funciona?
+              {t('nav.how')}
             </a>
           </div>
 
             {/* CTA Button */}
           <div className="md:block opacity-0">
             <Button className="bg-blue-600 hover:bg-blue-700 " onClick={() => window.open('https://github.com/JaimeH-Q/OGProtocol-Minecraft/releases', '_blank')}>
-              Descargar ↗
+              {t('nav.download')}
             </Button>
           </div>
 

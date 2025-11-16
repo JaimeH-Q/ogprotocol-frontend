@@ -8,8 +8,12 @@ import OG_ICONO from "../static/OG_ICONO.png";
 import { Button } from '../components/ui/Button';
 import { web3Enable, web3Accounts, web3FromAddress } from '@polkadot/extension-dapp'
 import { stringToU8a, u8aToHex } from '@polkadot/util'
+import { useTranslation } from 'react-i18next'
+import { LanguageSwitcher } from '../components/LanguageSwitcher';
+
 
 export default function Login() {
+  const { t } = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
   const params = new URLSearchParams(location.search)
@@ -25,16 +29,16 @@ export default function Login() {
   async function handleLogin() {
     setError(null)
     if (!token) {
-      setError('Missing token parameter in URL')
+      setError(t('login.missingToken'))
       return
     }
     if (!username) {
-      setError('Missing username parameter in URL')
+      setError(t('login.missingUsername'))
       return
     }
 
     if (!ip) {
-      setError('Missing IP parameter in URL')
+      setError(t('login.missingIP'))
       return
     }
 
@@ -43,11 +47,11 @@ export default function Login() {
     try {
       const extensions = await web3Enable('OG Protocol')
       if (!extensions || extensions.length === 0) {
-        throw new Error('No wallet extension detected or access was denied')
+        throw new Error(t('login.noWallet'))
       }
 
       const accounts = await web3Accounts()
-      if (!accounts || accounts.length === 0) throw new Error('No accounts found in wallet')
+      if (!accounts || accounts.length === 0) throw new Error(t('login.noAccounts'))
 
       const account = accounts[0]
 
@@ -55,7 +59,7 @@ export default function Login() {
       const messageHex = u8aToHex(stringToU8a(token))
 
       if (!injector.signer || typeof injector.signer.signRaw !== 'function') {
-        throw new Error('Your wallet does not support raw signing')
+        throw new Error(t('login.noSigner'))
       }
 
       const signed = await injector.signer.signRaw({
@@ -81,20 +85,20 @@ export default function Login() {
         })
       } catch (networkErr) {
         console.error('handleLogin: network error', networkErr)
-        throw new Error('Network error when contacting login server')
+        throw new Error(t('login.networkError'))
       }
 
       console.log('handleLogin: server responded status', res.status)
 
       if (!res.ok) {
         const text = await res.text()
-        throw new Error(text || 'Login failed')
+        throw new Error(text || t('login.failed'))
       }
 
       navigate(redirectTo)
     } catch (err: any) {
       console.error(err)
-      setError(err?.message ?? 'Error desconocido')
+      setError(err?.message ?? t('login.failed'))
     } finally {
       setLoading(false)
     }
@@ -106,12 +110,14 @@ export default function Login() {
 
       <NavbarLogin />
       <section className="flex flex-col items-center min-h-screen bg-linear-to-br from-gray-900 via-black to-blue-950 circuit-pattern">
+          <LanguageSwitcher />
+          
           <div className="flex items-center w-full justify-center">
               <img src={OG_ICONO} alt="OG Logo" className="w-35 m-10 mt-30"/>
           </div>
-          <div className="max-w-4xl text-center mb-6 text-white md:text-5xl font-bold">
-              Login with your wallet
-          </div>
+            <div className="max-w-4xl text-center mb-6 text-white md:text-5xl font-bold">
+              {t('login.title')}
+            </div>
           {/* <Button onClick={handleLogin} disabled={loading} className='w-40 text-white'>
             {loading ? 'Connecting...' : 'Connect'}
           </Button> */}
@@ -121,7 +127,7 @@ export default function Login() {
                     onClick={handleLogin}
                     disabled={loading}
                     >
-                    {loading ? 'Conecting...' : 'Connect'}
+                        {loading ? t('login.connecting') : t('login.connect')}
                   </button>
           </div>
                   {error && <div className="text-red-500 mt-4 flex items-center justify-center">{error}</div>}
