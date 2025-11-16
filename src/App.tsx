@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
-import Leaderboard from './pages/Leaderboard'
+import Success from './pages/Success'
 import Login from './pages/Login'
 
 export default function App() {
@@ -17,7 +17,7 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/success" element={<Success />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </main>
